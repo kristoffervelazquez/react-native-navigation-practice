@@ -1,7 +1,7 @@
 import React from 'react'
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { StackNavigator } from './StackNavigator';
-import { StyleSheet, useWindowDimensions } from 'react-native'
+import { useWindowDimensions } from 'react-native'
 import SettingsScreen from '../screens/SettingsScreen';
 
 const Drawer = createDrawerNavigator();
@@ -22,14 +22,8 @@ const MenuLateralBasico = () => {
     );
 }
 
-const style = {
-    color: 'green'
-}
-
-
-
 export default MenuLateralBasico
 
-const s = StyleSheet.create({})
+
 
 
