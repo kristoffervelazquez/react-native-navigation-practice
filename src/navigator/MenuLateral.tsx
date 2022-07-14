@@ -4,6 +4,8 @@ import { createDrawerNavigator, DrawerContentComponentProps, DrawerContentScroll
 import SettingsScreen from '../screens/SettingsScreen';
 import { StackNavigator } from './StackNavigator';
 import { styles } from '../theme/appTheme';
+import TabsNavigator from './TabsNavigator';
+import AmigosScreen from '../screens/AmigosScreen';
 
 const Drawer = createDrawerNavigator();
 
@@ -21,7 +23,7 @@ const MenuLateral = () => {
         >
 
             {/* Estas son las rutas que se pueden llamar en el menu interno */}
-            <Drawer.Screen name="StackNavigator" options={{ title: 'Home' }} component={StackNavigator} />
+            <Drawer.Screen name="Tabs" options={{ title: 'Home' }} component={TabsNavigator} />
             <Drawer.Screen name="SettingsScreen" options={{ title: 'Settings' }} component={SettingsScreen} />
         </Drawer.Navigator>
     );
@@ -47,17 +49,11 @@ const MenuInterno = (props: DrawerContentComponentProps) => {
             <View style={styles.menuContainer}>
 
                 <TouchableOpacity style={styles.menuItem}
-                    onPress={() => { navigation.navigate('StackNavigator') }}
+                    onPress={() => { navigation.navigate('Tabs') }}
                 >
                     <Text style={styles.menuItemText}>Home</Text>
                 </TouchableOpacity>
 
-                <TouchableOpacity style={styles.menuItem}
-                    onPress={() => { navigation.navigate('AmigosScreen') }}
-                >
-                    <Text style={styles.menuItemText}>Friends</Text>
-                </TouchableOpacity>
- 
                 <TouchableOpacity style={styles.menuItem}
                     onPress={() => { navigation.navigate('SettingsScreen') }}
                 >
