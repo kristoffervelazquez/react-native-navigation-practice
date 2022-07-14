@@ -6,6 +6,8 @@ import Tab2Screen from '../screens/Tab2Screen';
 import { StackNavigator } from './StackNavigator';
 import { colores } from '../theme/appTheme';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
+import TopTabNavigator from './TopTabNavigator';
+import Icon from 'react-native-vector-icons/dist/Ionicons';
 
 
 const Tabs = () => {
@@ -57,7 +59,7 @@ const TabsIOS = () => {
         >
             {/* <Tab.Screen name='Tab1Screaen' options={{ title: 'Tab 1', tabBarIcon: (props) => <Text style={{ color: props.color }}>T1</Text> }} component={Tab1Screen} /> */}
             <BottomTabIos.Screen name='Tab1Screen' options={{ title: 'Tab 1' }} component={Tab1Screen} />
-            <BottomTabIos.Screen name='Tab2Screen' options={{ title: 'Tab 2 Screen' }} component={Tab2Screen} />
+            <BottomTabIos.Screen name='Tab2Screen' options={{ title: 'Tab 2 Screen' }} component={TopTabNavigator} />
             <BottomTabIos.Screen name='StackNavigator' options={{ title: 'Stack' }} component={StackNavigator} />
         </BottomTabIos.Navigator>
     )
@@ -82,26 +84,31 @@ const TabsAndroid = () => {
                 tabBarLabelStyle: {
                     fontSize: 15
                 },
-                tabBarIcon: ({ color, focused }) => {
+                tabBarIcon: ({ focused }) => {
                     let iconName: string = '';
+                    let foucusedIconName: string = ''
                     switch (route.name) {
                         case 'Tab1Screen':
-                            iconName = 'T1'
+                            iconName = 'airplane-outline'
+                            foucusedIconName = 'airplane'
                             break;
 
                         case 'Tab2Screen':
-                            iconName = 'T2'
+                            iconName = 'apps-outline'
+                            foucusedIconName = 'apps'
                             break;
+
                         case 'StackNavigator':
-                            iconName = 'ST'
+                            iconName = 'file-tray-stacked-outline'
+                            foucusedIconName = 'file-tray-stacked'
                             break;
                     }
-                    return <Text style={{ color }}>{iconName}</Text>
+                    return <Icon name={(focused ? foucusedIconName : iconName)} size={20} color='white' />
                 }
             })}
         >
             <BottomTabAndroid.Screen name='Tab1Screen' options={{ title: 'Tab 1' }} component={Tab1Screen} />
-            <BottomTabAndroid.Screen name='Tab2Screen' options={{ title: 'Tab 2 Screen' }} component={Tab2Screen} />
+            <BottomTabAndroid.Screen name='Tab2Screen' options={{ title: 'Tab 2 Screen' }} component={TopTabNavigator} />
             <BottomTabAndroid.Screen name='StackNavigator' options={{ title: 'Stack' }} component={StackNavigator} />
         </BottomTabAndroid.Navigator>
     );
